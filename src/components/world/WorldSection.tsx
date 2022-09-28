@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Root } from "./worldinterface";
 
-export default function WorldSection() {
+export interface WorldStateProps {
+  setWorldState: (props: Root) => void;
+  globalRegion: string;
+}
+
+export default function WorldSection(props: WorldStateProps) {
   const [worldAPI, setWorldApi] = useState<Root>();
   const API_URL = "https://restcountries.com/v3.1/all";
 
@@ -13,41 +18,47 @@ export default function WorldSection() {
     let response = await fetch(url);
     let worldResponse: Root = await response.json();
     setWorldApi(worldResponse);
+    props.setWorldState(worldResponse);
   }
-  console.log(worldAPI);
-  /**
-   *
-   * worldApi contains an array of 250 items
-   * each row is 4 items
-   *
-   */
+  /*
+ Logic:
+
+ If Global region.length is 0 => render normal
+ If Global region.length !== 0 => render by region 
+ 
+ */
   return (
     <div className="WorldSection">
-      {worldAPI?.map((element, index) => {
-        //for every 4 , created a new div container
-        return (
-          <div key={index} className="country_Container">
-            <div key={index} className="country_Flag_Container">
-              <img
-                src={element.flags.png}
-                alt="country flags"
-                style={{
-                  maxHeight: "200px",
-                  height: "100%",
-                  width: "100%",
-                  objectFit: "fill",
-                }}
-              />
+      {worldAPI
+        ?.filter((element) => {
+          return element.region.includes(props.globalRegion);
+        })
+        .map((element, index) => {
+          return (
+            <div key={index} className="country_Container">
+              <div key={index} className="country_Flag_Container">
+                <img
+                  src={element.flags.png}
+                  alt="country flags"
+                  style={{
+                    maxHeight: "200px",
+                    height: "100%",
+                    width: "100%",
+                    objectFit: "fill",
+                  }}
+                />
+              </div>
+              <div className="country_Text_Container">
+                <h3>{element.name.common}</h3>
+                <p>Population: {element.population}</p>
+                <p>Region: {element.region}</p>
+                <p>Capital: {element.capital}</p>
+              </div>
             </div>
-            <div className="country_Text_Container">
-              <h3>{element.name.common}</h3>
-              <p>Population: {element.population}</p>
-              <p>Region: {element.region}</p>
-              <p>Capital: {element.capital}</p>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
     </div>
   );
 }
+
+//https://retool.com/blog/filtering-data-in-react-filter-map-and-for-loops/
