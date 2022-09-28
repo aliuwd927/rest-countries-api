@@ -20,13 +20,7 @@ export default function WorldSection(props: WorldStateProps) {
     setWorldApi(worldResponse);
     props.setWorldState(worldResponse);
   }
-  /*
- Logic:
 
- If Global region.length is 0 => render normal
- If Global region.length !== 0 => render by region 
- 
- */
   return (
     <div className="WorldSection">
       {worldAPI

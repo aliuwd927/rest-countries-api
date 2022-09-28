@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { Root } from "../world/worldinterface";
 
 export interface RegionFilterProps {
@@ -8,6 +8,10 @@ export interface RegionFilterProps {
 
 export default function RegionFilter(props: RegionFilterProps) {
   const [region, setRegion] = useState<string>("");
+
+  useEffect(() => {
+    props.setGlobalRegion(region);
+  }, [props.setGlobalRegion, region]);
 
   let regionSet: string[] = [
     ...new Set(
@@ -20,7 +24,6 @@ export default function RegionFilter(props: RegionFilterProps) {
   function handleRegion(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.currentTarget.value);
     setRegion(e.currentTarget.value);
-    props.setGlobalRegion(region);
   }
 
   return (
