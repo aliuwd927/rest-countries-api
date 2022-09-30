@@ -13,9 +13,7 @@ function App() {
   const [globalSearch, setGlobalSearch] = useState<string>("");
   //ToDo:
   /*
-    Lift State Up from Search Bar Section
-    Pass it down to World
-    Consider that we also have RegionFilter well render
+    React Router
   */
   return (
     <div className="App">
