@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Root } from "./worldinterface";
+import { Link } from "react-router-dom";
 
 export interface WorldStateProps {
   setWorldState: (props: Root) => void;
@@ -21,6 +22,10 @@ export default function WorldSection(props: WorldStateProps) {
     setWorldApi(worldResponse);
     props.setWorldState(worldResponse);
   }
+
+  function handleCountryRoute(): void {
+    console.log("Routing....");
+  }
   return (
     <div className="WorldSection">
       {worldAPI
@@ -37,26 +42,32 @@ export default function WorldSection(props: WorldStateProps) {
         })
         .map((element, index) => {
           return (
-            <div key={index} className="country_Container">
-              <div key={index} className="country_Flag_Container">
-                <img
-                  src={element.flags.png}
-                  alt="country flags"
-                  style={{
-                    maxHeight: "200px",
-                    height: "100%",
-                    width: "100%",
-                    objectFit: "fill",
-                  }}
-                />
+            <Link to="/country_details/">
+              <div
+                key={index}
+                className="country_Container"
+                onClick={handleCountryRoute}
+              >
+                <div key={index} className="country_Flag_Container">
+                  <img
+                    src={element.flags.png}
+                    alt="country flags"
+                    style={{
+                      maxHeight: "200px",
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "fill",
+                    }}
+                  />
+                </div>
+                <div className="country_Text_Container">
+                  <h3>{element.name.common}</h3>
+                  <p>Population: {element.population}</p>
+                  <p>Region: {element.region}</p>
+                  <p>Capital: {element.capital}</p>
+                </div>
               </div>
-              <div className="country_Text_Container">
-                <h3>{element.name.common}</h3>
-                <p>Population: {element.population}</p>
-                <p>Region: {element.region}</p>
-                <p>Capital: {element.capital}</p>
-              </div>
-            </div>
+            </Link>
           );
         })}
     </div>

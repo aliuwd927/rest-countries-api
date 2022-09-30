@@ -48,6 +48,10 @@
   place-self:center;
   width: 320px;
   height: 332px;
+  outline: auto;
+}
+.country_Container:hover{
+  cursor: pointer;
 }
 .country_Flag_Container{
   width: 320px;
@@ -58,8 +62,13 @@
 }
 
 .country_Text_Container{
+  width: 100%;
+  height: 100%;
   display: grid;
   place-self: center;
+  justify-content: center;
+  align-items: center;
+  outline: auto;
 }
 
 .country_Text_Container > p{

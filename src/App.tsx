@@ -1,38 +1,34 @@
 import "./App.scss";
-import TextBanner from "./components/banner/TextBannerSection";
-import ToggleTheme from "./components/banner/ToggleThemeSection";
-import SearchBar from "./components/filter/SearchBar";
-import RegionFilter from "./components/filter/RegionFilter";
-import World from "./components/world/WorldSection";
-import { Root } from "./components/world/worldinterface";
-import { useState } from "react";
+import Home from "./home";
+import { Routes, Route } from "react-router-dom";
+import CountryDetails from "./components/country_details/countryDetails";
 
 function App() {
-  const [worldState, setWorldState] = useState<Root>();
-  const [globalRegion, setGlobalRegion] = useState<string>("");
-  const [globalSearch, setGlobalSearch] = useState<string>("");
-  //ToDo:
-  /*
-    React Router
-  */
   return (
-    <div className="App">
-      <div className="Header">
-        <TextBanner />
-        <ToggleTheme />
-        <SearchBar setGlobalSearch={setGlobalSearch} />
-        <RegionFilter
-          worldState={worldState}
-          setGlobalRegion={setGlobalRegion}
-        />
-      </div>
-      <World
-        setWorldState={setWorldState}
-        globalRegion={globalRegion}
-        globalSearch={globalSearch}
-      />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/country_details" element={<CountryDetails />} />
+    </Routes>
   );
 }
 
 export default App;
+
+/*
+  useParams()
+    uses window.location.pathname or window object ( in general...)
+    /country_detail is static link
+    /country_detail/:country => The :country is dynamic
+    params then creates an object out of the dynamic part {country:"string"} or {country:number}
+    we then destructure it like this....
+    const { country } = useParams()
+
+    const {country}= useParams() also must follow the path...
+
+    example:
+
+    const {country} = useParams()
+
+    <Route path="/country_detail/:country"
+
+*/
