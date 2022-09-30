@@ -10,7 +10,12 @@ import { useState } from "react";
 function App() {
   const [worldState, setWorldState] = useState<Root>();
   const [globalRegion, setGlobalRegion] = useState<string>("");
-
+  //ToDo:
+  /*
+    Lift State Up from Search Bar Section
+    Pass it down to World
+    Consider that we also have RegionFilter well render
+  */
   return (
     <div className="App">
       <div className="Header">
