@@ -4,6 +4,7 @@ import { Root } from "./worldinterface";
 export interface WorldStateProps {
   setWorldState: (props: Root) => void;
   globalRegion: string;
+  globalSearch: string;
 }
 
 export default function WorldSection(props: WorldStateProps) {
@@ -20,12 +21,19 @@ export default function WorldSection(props: WorldStateProps) {
     setWorldApi(worldResponse);
     props.setWorldState(worldResponse);
   }
-
   return (
     <div className="WorldSection">
       {worldAPI
         ?.filter((element) => {
-          return element.region.includes(props.globalRegion);
+          let country = element.name.common.toLowerCase();
+          if (
+            props.globalSearch.toLowerCase() === country ||
+            props.globalSearch.length !== 0
+          ) {
+            return country.includes(props.globalSearch.toLowerCase());
+          } else {
+            return element.region.includes(props.globalRegion);
+          }
         })
         .map((element, index) => {
           return (

@@ -1,13 +1,18 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import useDebounce from "./useDebounce";
 
-export default function FilterSection() {
+export interface SearchBarProps {
+  setGlobalSearch: (props: string) => void;
+}
+
+export default function SearchBar(props: SearchBarProps) {
   const [debouncedValue, value, setValue] = useDebounce<string>("", 1000);
   const [searchValue, setSearchValue] = useState<string>("");
 
   useEffect(() => {
     setSearchValue(debouncedValue);
-  }, [debouncedValue]);
+    props.setGlobalSearch(searchValue);
+  }, [debouncedValue, props.setGlobalSearch, searchValue]);
 
   function handleSearchBarValue(e: ChangeEvent<HTMLInputElement>) {
     setValue(e.currentTarget.value);
