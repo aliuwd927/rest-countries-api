@@ -42,7 +42,8 @@ export default function WorldSection(props: WorldStateProps) {
         })
         .map((element, index) => {
           return (
-            <Link to="/country_details/">
+            //<Link to="/country_details/nameOfCountryThatWasClicked">
+            <Link to={`/country_details/${element.name.common}`}>
               <div
                 key={index}
                 className="country_Container"
