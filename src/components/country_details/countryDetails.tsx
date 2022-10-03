@@ -25,32 +25,49 @@ export default function CountryDetails() {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;
 
-        //console.log(countryLanuage);
+        //Borders use CCA3 type.
+        //Take the 3 letter number and match w/ CCA3
+        //Fetch Item using the CCA 3
         return (
           <div>
             <Link to={"/"}>
               <button>Back</button>
             </Link>
+            <br />
             <img src={element.flags.png} alt="" />
+            <br />
             <div>NavtiveName:{element.name.official}</div>
+            <br />
             <div>Population:{element.population}</div>
+            <br />
             <div>Region:{element.region}</div>
+            <br />
             <div>Sub-Region:{element.subregion}</div>
+            <br />
             <div>Capital:{element.capital}</div>
+            <br />
             <div>Top Level Domain:{element.tld}</div>
+            <br />
             <div>
               Currency:
               {Object.values(countryCurrency).map((currency) => {
-                return currency.name;
+                return <div>{currency.name}</div>;
               })}
             </div>
+            <br />
             <div>
               Language:
               {Object.values(countryLanuage).map((language) => {
-                return language;
+                return <div>{language}</div>;
               })}
             </div>
-            <div>Border{element.borders}</div>
+            <br />
+            <div>
+              Border:
+              {element.borders?.map((border) => {
+                return <div>{border}</div>;
+              })}
+            </div>
           </div>
         );
       })}

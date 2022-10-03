@@ -23,9 +23,7 @@ export default function WorldSection(props: WorldStateProps) {
     props.setWorldState(worldResponse);
   }
 
-  function handleCountryRoute(): void {
-    console.log("Routing....");
-  }
+  console.log(worldAPI);
   return (
     <div className="WorldSection">
       {worldAPI
@@ -44,11 +42,7 @@ export default function WorldSection(props: WorldStateProps) {
           return (
             //<Link to="/country_details/nameOfCountryThatWasClicked">
             <Link to={`/country_details/${element.name.common}`}>
-              <div
-                key={index}
-                className="country_Container"
-                onClick={handleCountryRoute}
-              >
+              <div key={index} className="country_Container">
                 <div key={index} className="country_Flag_Container">
                   <img
                     src={element.flags.png}
