@@ -2,6 +2,7 @@ import "./App.scss";
 import Home from "./home";
 import { Routes, Route } from "react-router-dom";
 import CountryDetails from "./components/country_details/countryDetails";
+import CountryBorder from "./components/country_details/countryBorder";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         path="/country_details/:nameOfCountry"
         element={<CountryDetails />}
       />
+      <Route path="/country_borders/:cca3" element={<CountryBorder />}></Route>
     </Routes>
   );
 }

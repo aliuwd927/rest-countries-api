@@ -18,7 +18,7 @@ export default function CountryDetails() {
     let countryResponse: Root = await response.json();
     setCountryAPIDetails(countryResponse);
   }
-  console.log(countryAPIDetails);
+  //console.log(countryAPIDetails);
   return (
     <div>
       {countryAPIDetails?.map((element) => {
@@ -65,7 +65,13 @@ export default function CountryDetails() {
             <div>
               Border:
               {element.borders?.map((border) => {
-                return <div>{border}</div>;
+                return (
+                  <div>
+                    <Link to={`/country_borders/${border}`}>
+                      <button>{border}</button>
+                    </Link>
+                  </div>
+                );
               })}
             </div>
           </div>
