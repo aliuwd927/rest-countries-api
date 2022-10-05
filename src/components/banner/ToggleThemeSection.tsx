@@ -1,3 +1,17 @@
+import { useState } from "react";
+
 export default function ToggleThemeSection() {
-  return <div className="ToggleThemeSection">Dark Mode</div>;
+  const [toggle, setToggle] = useState(true);
+  function handleToggle() {
+    setToggle(!toggle);
+  }
+  return (
+    <div
+      className="ToggleThemeSection"
+      onClick={handleToggle}
+      style={{ backgroundColor: toggle ? "#ffffff" : "#404040" }}
+    >
+      Dark Mode
+    </div>
+  );
 }
