@@ -9,9 +9,9 @@ export default function CountryBorder() {
 
   useEffect(() => {
     getCountryByCCA(API_URL);
-  }, [getCountryByCCA]);
+  }, [API_URL]);
 
-  async function getCountryByCCA(url: string) {
+  async function getCountryByCCA(url: string): Promise<void> {
     let response = await fetch(url);
     let countryByCCA = await response.json();
     setBorderCountryDetail(countryByCCA);

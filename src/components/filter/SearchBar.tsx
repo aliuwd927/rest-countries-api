@@ -14,7 +14,7 @@ export default function SearchBar(props: SearchBarProps) {
     props.setGlobalSearch(searchValue);
   }, [debouncedValue, props.setGlobalSearch, searchValue]);
 
-  function handleSearchBarValue(e: ChangeEvent<HTMLInputElement>) {
+  function handleSearchBarValue(e: ChangeEvent<HTMLInputElement>): void {
     setValue(e.currentTarget.value);
   }
 

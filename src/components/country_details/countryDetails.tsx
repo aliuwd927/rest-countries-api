@@ -11,9 +11,9 @@ export default function CountryDetails() {
   const API_URL = `https://restcountries.com/v3.1/name/${nameOfCountry}?fullText=true`;
   useEffect(() => {
     getCountryDetails(API_URL);
-  }, []);
+  }, [API_URL]);
 
-  async function getCountryDetails(url: string) {
+  async function getCountryDetails(url: string): Promise<void> {
     let response = await fetch(url);
     let countryResponse: Root = await response.json();
     setCountryAPIDetails(countryResponse);

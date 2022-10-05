@@ -16,7 +16,7 @@ export default function WorldSection(props: WorldStateProps) {
     getWorld(API_URL);
   }, []);
 
-  async function getWorld(url: string) {
+  async function getWorld(url: string): Promise<void> {
     let response = await fetch(url);
     let worldResponse: Root = await response.json();
     setWorldApi(worldResponse);
