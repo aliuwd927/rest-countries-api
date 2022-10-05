@@ -17,7 +17,7 @@ export default function CountryBorder() {
     setBorderCountryDetail(countryByCCA);
   }
   return (
-    <div>
+    <div className="Body_Container_Toggle">
       {borderCountryDetail?.map((element) => {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;

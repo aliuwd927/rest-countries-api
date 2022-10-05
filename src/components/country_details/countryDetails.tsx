@@ -19,7 +19,7 @@ export default function CountryDetails() {
     setCountryAPIDetails(countryResponse);
   }
   return (
-    <div>
+    <div className="Body_Container_Toggle">
       {countryAPIDetails?.map((element) => {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;

@@ -11,7 +11,7 @@ export default function Home() {
   const [globalRegion, setGlobalRegion] = useState<string>("");
   const [globalSearch, setGlobalSearch] = useState<string>("");
   return (
-    <div className="Home">
+    <div className="Body_Container_Toggle">
       <div className="Header">
         <TextBanner />
         <ToggleTheme />
