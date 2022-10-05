@@ -22,7 +22,6 @@ export default function RegionFilter(props: RegionFilterProps) {
   ];
 
   function handleRegion(e: ChangeEvent<HTMLSelectElement>): void {
-    console.log(e.currentTarget.value);
     setRegion(e.currentTarget.value);
   }
 

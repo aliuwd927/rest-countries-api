@@ -10,11 +10,6 @@ export default function Home() {
   const [worldState, setWorldState] = useState<Root>();
   const [globalRegion, setGlobalRegion] = useState<string>("");
   const [globalSearch, setGlobalSearch] = useState<string>("");
-  //ToDo:
-  /*
-    React Router
-  */
-
   return (
     <div className="Home">
       <div className="Header">

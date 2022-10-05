@@ -23,7 +23,6 @@ export default function WorldSection(props: WorldStateProps) {
     props.setWorldState(worldResponse);
   }
 
-  console.log(worldAPI);
   return (
     <div className="WorldSection">
       {worldAPI

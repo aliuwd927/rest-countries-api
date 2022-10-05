@@ -18,7 +18,6 @@ export default function CountryDetails() {
     let countryResponse: Root = await response.json();
     setCountryAPIDetails(countryResponse);
   }
-  //console.log(countryAPIDetails);
   return (
     <div>
       {countryAPIDetails?.map((element) => {
