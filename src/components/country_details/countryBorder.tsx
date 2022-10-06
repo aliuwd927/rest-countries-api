@@ -23,7 +23,7 @@ export default function CountryBorder(props: CountryBorderProps) {
   return (
     <div
       className="Body_Container_Toggle"
-      style={{ backgroundColor: props.bgColor ? "#ffffff" : "#404040" }}
+      style={{ backgroundColor: props.bgColor ? "#f2f2f2" : "#202C36" }}
     >
       {borderCountryDetail?.map((element) => {
         let { ...countryCurrency } = element?.currencies;

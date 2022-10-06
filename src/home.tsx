@@ -15,7 +15,7 @@ export default function Home(props: HomeProps) {
   const [worldState, setWorldState] = useState<Root>();
   const [globalRegion, setGlobalRegion] = useState<string>("");
   const [globalSearch, setGlobalSearch] = useState<string>("");
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
     props.setBgColor(darkMode);
@@ -23,7 +23,7 @@ export default function Home(props: HomeProps) {
   return (
     <div
       className="Body_Container_Toggle"
-      style={{ backgroundColor: props.bgColor ? "#ffffff" : "#404040" }}
+      style={{ backgroundColor: props.bgColor ? "#f2f2f2" : "#202C36" }}
     >
       <div className="Header">
         <TextBanner />
@@ -38,6 +38,7 @@ export default function Home(props: HomeProps) {
         setWorldState={setWorldState}
         globalRegion={globalRegion}
         globalSearch={globalSearch}
+        darkMode={darkMode}
       />
     </div>
   );
