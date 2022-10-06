@@ -35,7 +35,7 @@ export default function CountryDetails(props: CountryDetailsProps) {
         //Take the 3 letter number and match w/ CCA3
         //Fetch Item using the CCA 3
         return (
-          <div>
+          <div className="country_Detail_Container">
             <Link to={"/"}>
               <button>Back</button>
             </Link>
