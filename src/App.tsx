@@ -1,18 +1,27 @@
 import "./App.scss";
 import Home from "./home";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import CountryDetails from "./components/country_details/countryDetails";
 import CountryBorder from "./components/country_details/countryBorder";
 
 function App() {
+  const [bgColor, setBgColor] = useState<boolean>(false);
+
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={<Home setBgColor={setBgColor} bgColor={bgColor} />}
+      />
       <Route
         path="/country_details/:nameOfCountry"
-        element={<CountryDetails />}
+        element={<CountryDetails bgColor={bgColor} />}
       />
-      <Route path="/country_borders/:cca3" element={<CountryBorder />}></Route>
+      <Route
+        path="/country_borders/:cca3"
+        element={<CountryBorder bgColor={bgColor} />}
+      ></Route>
     </Routes>
   );
 }

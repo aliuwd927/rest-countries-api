@@ -4,17 +4,30 @@ import SearchBar from "./components/filter/SearchBar";
 import RegionFilter from "./components/filter/RegionFilter";
 import World from "./components/world/WorldSection";
 import { Root } from "./components/world/worldinterface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Home() {
+export interface HomeProps {
+  bgColor: boolean;
+  setBgColor: (props: boolean) => void;
+}
+
+export default function Home(props: HomeProps) {
   const [worldState, setWorldState] = useState<Root>();
   const [globalRegion, setGlobalRegion] = useState<string>("");
   const [globalSearch, setGlobalSearch] = useState<string>("");
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    props.setBgColor(darkMode);
+  }, [props.setBgColor, darkMode]);
   return (
-    <div className="Body_Container_Toggle">
+    <div
+      className="Body_Container_Toggle"
+      style={{ backgroundColor: props.bgColor ? "#ffffff" : "#404040" }}
+    >
       <div className="Header">
         <TextBanner />
-        <ToggleTheme />
+        <ToggleTheme setDarkMode={setDarkMode} />
         <SearchBar setGlobalSearch={setGlobalSearch} />
         <RegionFilter
           worldState={worldState}

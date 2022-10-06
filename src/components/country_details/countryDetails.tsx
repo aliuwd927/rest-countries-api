@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Root } from "../world/worldinterface";
 
-export default function CountryDetails() {
+export interface CountryDetailsProps {
+  bgColor: boolean;
+}
+
+export default function CountryDetails(props: CountryDetailsProps) {
   //const countryClicked = useParams(); => This will return obj w/ KeyPair:Values
   //use Fetch API => Take value from countryCLick Obj
   //Render country items based off the Fetch API
@@ -19,7 +23,10 @@ export default function CountryDetails() {
     setCountryAPIDetails(countryResponse);
   }
   return (
-    <div className="Body_Container_Toggle">
+    <div
+      className="Body_Container_Toggle"
+      style={{ backgroundColor: props.bgColor ? "#ffffff" : "#404040" }}
+    >
       {countryAPIDetails?.map((element) => {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Root } from "../world/worldinterface";
 
-export default function CountryBorder() {
+export interface CountryBorderProps {
+  bgColor: boolean;
+}
+
+export default function CountryBorder(props: CountryBorderProps) {
   const [borderCountryDetail, setBorderCountryDetail] = useState<Root>();
   const { cca3 } = useParams();
   const API_URL = `https://restcountries.com/v3.1/alpha/${cca3}`;
@@ -17,7 +21,10 @@ export default function CountryBorder() {
     setBorderCountryDetail(countryByCCA);
   }
   return (
-    <div className="Body_Container_Toggle">
+    <div
+      className="Body_Container_Toggle"
+      style={{ backgroundColor: props.bgColor ? "#ffffff" : "#404040" }}
+    >
       {borderCountryDetail?.map((element) => {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;
