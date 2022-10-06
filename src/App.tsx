@@ -6,7 +6,7 @@ import CountryDetails from "./components/country_details/countryDetails";
 import CountryBorder from "./components/country_details/countryBorder";
 
 function App() {
-  const [bgColor, setBgColor] = useState<boolean>(false);
+  const [bgColor, setBgColor] = useState<boolean>(true);
 
   return (
     <Routes>

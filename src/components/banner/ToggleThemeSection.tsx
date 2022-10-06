@@ -5,7 +5,7 @@ export interface ToggleThemeProps {
 }
 
 export default function ToggleThemeSection(props: ToggleThemeProps) {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggle, setToggle] = useState<boolean>(true);
   useEffect(() => {
     props.setDarkMode(toggle);
   }, [props.setDarkMode, toggle]);
@@ -13,11 +13,7 @@ export default function ToggleThemeSection(props: ToggleThemeProps) {
     setToggle(!toggle);
   }
   return (
-    <div
-      className="ToggleThemeSection"
-      onClick={handleToggle}
-      // style={{ backgroundColor: toggle ? "#ffffff" : "#404040" }}
-    >
+    <div className="ToggleThemeSection" onClick={handleToggle}>
       Dark Mode
     </div>
   );
