@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
 }
 
 .Header{
@@ -87,6 +86,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
