@@ -87,10 +87,34 @@
 
 //Country Detail Route
 
-.country_Detail_Container{
+.country_Detail_Inner_Container{
   width: 100vw;
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(5,1fr);
   grid-template-rows: repeat(5,1fr)
+}
+
+.Rtn_Home_Btn{
+  grid-area: 1 / 2 / 2 / 3; 
+}
+
+.country_Detail_Flag{
+  grid-area: 2 / 2 / 3 / 3; 
+}
+
+.country_Detail_Stats{
+  grid-area: 2 / 4 / 5 / 6; 
+}
+
+.country_Details_Stats_L{
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+.country_Details_Stats_R{
+  grid-area: 2 / 5 / 3 / 6;
+}
+
+.Border_Stuff{
+  grid-area: 3 / 4 / 4 / 5;
 }

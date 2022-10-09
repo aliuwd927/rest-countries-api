@@ -39,49 +39,47 @@ export default function CountryDetails() {
               <img src={element.flags.png} alt="" />
             </div>
 
-            <div className="country_Detail_Stats">
-              <div className="country_Details_Stats_L">
-                <div>NavtiveName:{element.name.official}</div>
+            <div className="country_Details_Stats_L">
+              <div>NavtiveName:{element.name.official}</div>
 
-                <div>Population:{element.population}</div>
+              <div>Population:{element.population}</div>
 
-                <div>Region:{element.region}</div>
+              <div>Region:{element.region}</div>
 
-                <div>Sub-Region:{element.subregion}</div>
+              <div>Sub-Region:{element.subregion}</div>
 
-                <div>Capital:{element.capital}</div>
-              </div>
+              <div>Capital:{element.capital}</div>
+            </div>
 
-              <div className="country_Details_Stats_R">
-                <div>Top Level Domain:{element.tld}</div>
+            <div className="country_Details_Stats_R">
+              <div>Top Level Domain:{element.tld}</div>
 
-                <div>
-                  Currency:
-                  {Object.values(countryCurrency).map((currency) => {
-                    return <div>{currency.name}</div>;
-                  })}
-                </div>
-
-                <div>
-                  Language:
-                  {Object.values(countryLanuage).map((language) => {
-                    return <div>{language}</div>;
-                  })}
-                </div>
+              <div>
+                Currency:
+                {Object.values(countryCurrency).map((currency) => {
+                  return <div>{currency.name}</div>;
+                })}
               </div>
 
               <div>
-                Border:
-                {element.borders?.map((border) => {
-                  return (
-                    <div>
-                      <Link to={`/country_borders/${border}`}>
-                        <button>{border}</button>
-                      </Link>
-                    </div>
-                  );
+                Language:
+                {Object.values(countryLanuage).map((language) => {
+                  return <div>{language}</div>;
                 })}
               </div>
+            </div>
+
+            <div className="Border_Stuff">
+              Border:
+              {element.borders?.map((border) => {
+                return (
+                  <div>
+                    <Link to={`/country_borders/${border}`}>
+                      <button>{border}</button>
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         );
@@ -89,3 +87,14 @@ export default function CountryDetails() {
     </div>
   );
 }
+
+/*
+  CSS Grid:
+
+  Use Parent Container to set the layout
+
+  Only wrap items in div Once
+  No Divs within a div, that complicates things.
+
+
+*/
