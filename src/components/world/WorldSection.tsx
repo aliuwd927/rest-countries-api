@@ -6,7 +6,7 @@ export interface WorldStateProps {
   setWorldState: (props: Root) => void;
   globalRegion: string;
   globalSearch: string;
-  darkMode: boolean;
+  bgColor: boolean;
 }
 
 export default function WorldSection(props: WorldStateProps) {
@@ -41,7 +41,10 @@ export default function WorldSection(props: WorldStateProps) {
         .map((element, index) => {
           return (
             //<Link to="/country_details/nameOfCountryThatWasClicked">
-            <Link to={`/country_details/${element.name.common}`}>
+            <Link
+              to={`/country_details/${element.name.common}`}
+              className="Link_Container"
+            >
               <div key={index} className="country_Container">
                 <img
                   src={element.flags.png}
@@ -58,8 +61,7 @@ export default function WorldSection(props: WorldStateProps) {
                 <div
                   className="country_Text_Container"
                   style={{
-                    backgroundColor: props.darkMode ? "#FFFFFF" : "#2B3844",
-                    color: props.darkMode ? "black" : "white",
+                    backgroundColor: props.bgColor ? "#2B3844" : "#FFFFFF",
                   }}
                 >
                   <h3>{element.name.common}</h3>

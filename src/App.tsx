@@ -2,6 +2,8 @@ import "./App.scss";
 import Home from "./home";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import TextBanner from "./components/banner/TextBannerSection";
+import ToggleTheme from "./components/banner/ToggleThemeSection";
 import CountryDetails from "./components/country_details/countryDetails";
 import CountryBorder from "./components/country_details/countryBorder";
 
@@ -9,20 +11,26 @@ function App() {
   const [bgColor, setBgColor] = useState<boolean>(true);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<Home setBgColor={setBgColor} bgColor={bgColor} />}
-      />
-      <Route
-        path="/country_details/:nameOfCountry"
-        element={<CountryDetails bgColor={bgColor} />}
-      />
-      <Route
-        path="/country_borders/:cca3"
-        element={<CountryBorder bgColor={bgColor} />}
-      ></Route>
-    </Routes>
+    <div
+      className="App"
+      style={{ backgroundColor: bgColor ? "#202C36" : "#F2F2F2" }}
+    >
+      <div className="Header">
+        <TextBanner />
+        <ToggleTheme setBgColor={setBgColor} />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home bgColor={bgColor} />} />
+        <Route
+          path="/country_details/:nameOfCountry"
+          element={<CountryDetails />}
+        />
+        <Route
+          path="/country_borders/:cca3"
+          element={<CountryBorder />}
+        ></Route>
+      </Routes>
+    </div>
   );
 }
 

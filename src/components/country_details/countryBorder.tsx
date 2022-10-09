@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Root } from "../world/worldinterface";
 
-export interface CountryBorderProps {
-  bgColor: boolean;
-}
-
-export default function CountryBorder(props: CountryBorderProps) {
+export default function CountryBorder() {
   const [borderCountryDetail, setBorderCountryDetail] = useState<Root>();
   const { cca3 } = useParams();
   const API_URL = `https://restcountries.com/v3.1/alpha/${cca3}`;
@@ -21,10 +17,7 @@ export default function CountryBorder(props: CountryBorderProps) {
     setBorderCountryDetail(countryByCCA);
   }
   return (
-    <div
-      className="Body_Container_Toggle"
-      style={{ backgroundColor: props.bgColor ? "#f2f2f2" : "#202C36" }}
-    >
+    <div className="country_border_Container">
       {borderCountryDetail?.map((element) => {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;
@@ -33,7 +26,7 @@ export default function CountryBorder(props: CountryBorderProps) {
         //Take the 3 letter number and match w/ CCA3
         //Fetch Item using the CCA 3
         return (
-          <div>
+          <div className="country_border_inner_Container">
             <Link to={"/"}>
               <button>Back</button>
             </Link>

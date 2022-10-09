@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Root } from "../world/worldinterface";
 
-export interface CountryDetailsProps {
-  bgColor: boolean;
-}
-
-export default function CountryDetails(props: CountryDetailsProps) {
+export default function CountryDetails() {
   //const countryClicked = useParams(); => This will return obj w/ KeyPair:Values
   //use Fetch API => Take value from countryCLick Obj
   //Render country items based off the Fetch API
@@ -23,10 +19,7 @@ export default function CountryDetails(props: CountryDetailsProps) {
     setCountryAPIDetails(countryResponse);
   }
   return (
-    <div
-      className="Body_Container_Toggle"
-      style={{ backgroundColor: props.bgColor ? "#f2f2f2" : "#202C36" }}
-    >
+    <div className="country_Detail_Container">
       {countryAPIDetails?.map((element) => {
         let { ...countryCurrency } = element?.currencies;
         let { ...countryLanuage } = element?.languages;
@@ -35,10 +28,13 @@ export default function CountryDetails(props: CountryDetailsProps) {
         //Take the 3 letter number and match w/ CCA3
         //Fetch Item using the CCA 3
         return (
-          <div className="country_Detail_Container">
-            <Link to={"/"}>
-              <button>Back</button>
-            </Link>
+          <div className="country_Detail_Inner_Container">
+            <div className="Rtn_Home_Btn">
+              <Link to={"/"}>
+                <button>Back</button>
+              </Link>
+            </div>
+
             <div className="country_Detail_Flag">
               <img src={element.flags.png} alt="" />
             </div>
