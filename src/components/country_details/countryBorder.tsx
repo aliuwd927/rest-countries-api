@@ -27,39 +27,46 @@ export default function CountryBorder() {
         //Fetch Item using the CCA 3
         return (
           <div className="country_border_inner_Container">
-            <Link to={"/"}>
-              <button>Back</button>
-            </Link>
-            <br />
-            <img src={element.flags.png} alt="" />
-            <br />
-            <div>NavtiveName:{element.name.official}</div>
-            <br />
-            <div>Population:{element.population}</div>
-            <br />
-            <div>Region:{element.region}</div>
-            <br />
-            <div>Sub-Region:{element.subregion}</div>
-            <br />
-            <div>Capital:{element.capital}</div>
-            <br />
-            <div>Top Level Domain:{element.tld}</div>
-            <br />
-            <div>
-              Currency:
-              {Object.values(countryCurrency).map((currency) => {
-                return <div>{currency.name}</div>;
-              })}
+            <div className="Rtn_Home_Btn">
+              <Link to={"/"}>
+                <button>Back</button>
+              </Link>
             </div>
-            <br />
-            <div>
-              Language:
-              {Object.values(countryLanuage).map((language) => {
-                return <div>{language}</div>;
-              })}
+
+            <div className="country_Detail_Flag">
+              <img src={element.flags.png} alt="" />
             </div>
-            <br />
-            <div>
+
+            <div className="country_Details_Stats_L">
+              <div>NavtiveName:{element.name.official}</div>
+
+              <div>Population:{element.population}</div>
+
+              <div>Region:{element.region}</div>
+
+              <div>Sub-Region:{element.subregion}</div>
+
+              <div>Capital:{element.capital}</div>
+            </div>
+
+            <div className="country_Details_Stats_R">
+              <div>Top Level Domain:{element.tld}</div>
+
+              <div>
+                Currency:
+                {Object.values(countryCurrency).map((currency) => {
+                  return <div>{currency.name}</div>;
+                })}
+              </div>
+
+              <div>
+                Language:
+                {Object.values(countryLanuage).map((language) => {
+                  return <div>{language}</div>;
+                })}
+              </div>
+            </div>
+            <div className="Border_Stuff">
               Border:
               {element.borders?.map((border) => {
                 return (
